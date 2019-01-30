@@ -1,0 +1,10 @@
+docs/
+node_modules/
+.editorconfig
+.gitignore
+.git
+.stylelintrc
+.travis.yml
+.yarnclean
+.DS_Store
+*.log

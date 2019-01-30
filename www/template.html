@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>board viewer sample</title>
+  </head>
+  <body>
+    <board-viewer></board-viewer>
+
+    <script>
+      window.onload = () => {
+        var viewer = document.querySelector('board-viewer')
+
+        viewer.board = {
+          id: 'abc',
+          model: {
+            width: 1920,
+            height: 1080,
+            type: 'model-layer',
+            translate: {
+              x: 0,
+              y: 143.03125
+            },
+            scale: {
+              x: 0.5703125,
+              y: 0.5703125
+            },
+            components: [
+              {
+                type: 'rect',
+                left: 276.1369863013699,
+                top: 74.43835616438355,
+                width: 1426.4383561643835,
+                height: 921.4520547945206,
+                fillStyle: 'tomato',
+                strokeStyle: '#000',
+                alpha: 1,
+                hidden: false,
+                lineWidth: 1,
+                lineDash: 'solid',
+                lineCap: 'butt',
+                rotation: 0
+              }
+            ]
+          }
+        }
+
+        viewer.fit = 'ratio'
+        viewer.provider = null
+      }
+    </script>
+  </body>
+</html>
