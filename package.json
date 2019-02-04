@@ -15,7 +15,7 @@
     "@material/mwc-button": "^0.3.5",
     "@material/mwc-fab": "^0.3.5",
     "@material/mwc-icon": "^0.3.5",
-    "@things-shell/client-utils": "^0.0.1",
+    "@things-shell/client-utils": "^0.0.5",
     "lit-element": "^2.0.0-rc.5",
     "web-animations-js": "^2.3.1"
   },
