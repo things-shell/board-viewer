@@ -4,8 +4,6 @@ import '@material/mwc-fab/mwc-fab'
 import '@material/mwc-icon/mwc-icon'
 import '@material/mwc-button/mwc-button'
 
-import 'web-animations-js'
-
 import { create } from '@hatiolab/things-scene'
 import { togglefullscreen } from '@things-shell/client-utils'
 
@@ -61,20 +59,18 @@ class BoardViewer extends LitElement {
         >keyboard_arrow_right</mwc-icon
       >
 
-      ${
-        !this.isIOS()
-          ? html`
-              <mwc-fab
-                id="fullscreen"
-                icon="fullscreen"
-                @tap=${e => this.onTapFullscreen(e)}
-                @mouseover=${e => this.transientShowButtons(stop)}
-                @mouseout=${e => this.transientShowButtons()}
-                title="fullscreen"
-              ></mwc-fab>
-            `
-          : html``
-      }
+      ${!this.isIOS()
+        ? html`
+            <mwc-fab
+              id="fullscreen"
+              icon="fullscreen"
+              @tap=${e => this.onTapFullscreen(e)}
+              @mouseover=${e => this.transientShowButtons(stop)}
+              @mouseout=${e => this.transientShowButtons()}
+              title="fullscreen"
+            ></mwc-fab>
+          `
+        : html``}
     `
   }
 
