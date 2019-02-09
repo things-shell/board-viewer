@@ -25,7 +25,8 @@ class BoardViewer extends LitElement {
     return {
       board: Object,
       provider: Object,
-      fitMode: String
+      fitMode: String,
+      baseUrl: String
     }
   }
 
@@ -115,6 +116,11 @@ class BoardViewer extends LitElement {
       mode: 0,
       refProvider: this.provider
     })
+
+    if (this.baseUrl) {
+      scene.baseUrl = this.baseUrl
+    }
+
     this.provider.add(this.board.id, scene)
 
     this.showScene(this.board.id)
