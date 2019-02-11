@@ -38,7 +38,7 @@ class BoardViewer extends LitElement {
     return html`
       <mwc-icon
         id="prev"
-        @tap=${e => this.onTapPrev(e)}
+        @click=${e => this.onTapPrev(e)}
         @mouseover=${e => this.transientShowButtons(true)}
         @mouseout=${e => this.transientShowButtons()}
         hidden
@@ -53,7 +53,7 @@ class BoardViewer extends LitElement {
 
       <mwc-icon
         id="next"
-        @tap=${e => this.onTapNext(e)}
+        @click=${e => this.onTapNext(e)}
         @mouseover=${e => this.transientShowButtons(true)}
         @mouseout=${e => this.transientShowButtons()}
         hidden
@@ -65,7 +65,7 @@ class BoardViewer extends LitElement {
             <mwc-fab
               id="fullscreen"
               icon="fullscreen"
-              @tap=${e => this.onTapFullscreen(e)}
+              @click=${e => this.onTapFullscreen(e)}
               @mouseover=${e => this.transientShowButtons(stop)}
               @mouseout=${e => this.transientShowButtons()}
               title="fullscreen"
