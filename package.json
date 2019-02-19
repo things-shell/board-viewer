@@ -1,16 +1,14 @@
 {
   "name": "@things-shell/board-viewer",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "main": "src/index.js",
-  "module": "dist/board-viewer.mjs",
-  "jsnext:main": "dist/board-viewer.mjs",
   "repository": "https://github.com/things-shell/board-viewer.git",
   "author": "Hearty Oh <heartyoh@hatiolab.com>",
   "license": "MIT",
   "scripts": {
     "serve": "webpack-dev-server --hot",
-    "build": "rollup -c",
-    "prepublish": "rollup -c"
+    "build": "webpack",
+    "prepublish": "webpack"
   },
   "dependencies": {
     "@hatiolab/things-scene": "^2.5.0",
