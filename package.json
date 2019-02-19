@@ -1,6 +1,6 @@
 {
   "name": "@things-shell/board-viewer",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "src/index.js",
   "module": "dist/board-viewer.mjs",
   "jsnext:main": "dist/board-viewer.mjs",
@@ -17,8 +17,8 @@
     "@material/mwc-button": "^0.3.5",
     "@material/mwc-fab": "^0.3.5",
     "@material/mwc-icon": "^0.3.5",
-    "@things-shell/client-utils": "^0.0.11",
-    "lit-element": "^2.0.0-rc.5"
+    "@things-shell/client-utils": "^0.1.0",
+    "lit-element": "^2.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
