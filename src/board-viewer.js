@@ -5,7 +5,7 @@ import '@material/mwc-icon/mwc-icon'
 import '@material/mwc-button/mwc-button'
 
 import { create } from '@hatiolab/things-scene'
-import { togglefullscreen } from '@things-shell/client-utils'
+import { togglefullscreen, isIOS } from '@things-shell/client-utils'
 
 import { style } from './board-viewer-style'
 
@@ -35,6 +35,19 @@ class BoardViewer extends LitElement {
   }
 
   render() {
+    var fabFullscreen = isIOS()
+      ? html`
+          <mwc-fab
+            id="fullscreen"
+            icon="fullscreen"
+            @click=${e => this.onTapFullscreen(e)}
+            @mouseover=${e => this.transientShowButtons(stop)}
+            @mouseout=${e => this.transientShowButtons()}
+            title="fullscreen"
+          ></mwc-fab>
+        `
+      : html``
+
     return html`
       <mwc-icon
         id="prev"
@@ -51,27 +64,7 @@ class BoardViewer extends LitElement {
         @mousemove=${e => this.transientShowButtons()}
       ></div>
 
-      <mwc-icon
-        id="next"
-        @click=${e => this.onTapNext(e)}
-        @mouseover=${e => this.transientShowButtons(true)}
-        @mouseout=${e => this.transientShowButtons()}
-        hidden
-        >keyboard_arrow_right</mwc-icon
-      >
-
-      ${!this.isIOS()
-        ? html`
-            <mwc-fab
-              id="fullscreen"
-              icon="fullscreen"
-              @click=${e => this.onTapFullscreen(e)}
-              @mouseover=${e => this.transientShowButtons(stop)}
-              @mouseout=${e => this.transientShowButtons()}
-              title="fullscreen"
-            ></mwc-fab>
-          `
-        : html``}
+      ${fabFullscreen}
     `
   }
 
@@ -127,10 +120,6 @@ class BoardViewer extends LitElement {
 
     /* provider.add 시에 추가된 레퍼런스 카운트를 다운시켜주어야 함 */
     scene.release()
-  }
-
-  isIOS() {
-    return false
   }
 
   get target() {
