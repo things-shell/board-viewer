@@ -16,6 +16,7 @@ class BoardViewer extends LitElement {
     this.board = ''
     this.provider = null
     this.scene = null
+    this.fitMode = 'ratio'
 
     this.forward = []
     this.backward = []
@@ -35,7 +36,7 @@ class BoardViewer extends LitElement {
   }
 
   render() {
-    var fabFullscreen = !isIOS()
+    var fullscreen = !isIOS()
       ? html`
           <mwc-fab
             id="fullscreen"
@@ -64,14 +65,22 @@ class BoardViewer extends LitElement {
         @mousemove=${e => this.transientShowButtons()}
       ></div>
 
-      ${fabFullscreen}
+      <mwc-icon
+        id="next"
+        @click=${e => this.onTapNext(e)}
+        @mouseover=${e => this.transientShowButtons(true)}
+        @mouseout=${e => this.transientShowButtons()}
+        hidden
+        >keyboard_arrow_right</mwc-icon
+      >
+
+      ${fullscreen}
     `
   }
 
   firstUpdated() {
     window.addEventListener('resize', () => {
-      this.scene && this.scene.resize()
-      this.scene && this.scene.fit('ratio')
+      this.scene && this.scene.fit(this.fitMode)
     })
   }
 
@@ -162,6 +171,20 @@ class BoardViewer extends LitElement {
     }
   }
 
+  setupScene(scene) {
+    this.scene = scene
+
+    /* scene의 기존 target을 보관한다. */
+    this._oldtarget = this.scene.target
+
+    this.scene.fit(this.fitMode)
+    this.scene.target = this.target
+
+    this.bindSceneEvents(this.scene)
+
+    this.transientShowButtons()
+  }
+
   async showScene(boardId) {
     if (!boardId) return
 
@@ -191,17 +214,7 @@ class BoardViewer extends LitElement {
       /* forward를 비운다. */
       this.forward = []
 
-      this.scene = scene
-
-      /* scene의 기존 target을 보관한다. */
-      this._oldtarget = this.scene.target
-      this.scene.target = this.target
-
-      this.bindSceneEvents(this.scene)
-
-      this.scene.fit('ratio')
-
-      this.transientShowButtons()
+      this.setupScene(scene)
     } catch (e) {
       console.error(e)
     }
@@ -271,15 +284,7 @@ class BoardViewer extends LitElement {
       this.backward.push(this.scene)
     }
 
-    this.scene = scene
-
-    /* scene의 기존 target을 보관한다. */
-    this._oldtarget = this.scene.target
-    this.scene.target = this.target
-    this.bindSceneEvents(this.scene)
-
-    this.scene.fit('ratio')
-    this.transientShowButtons()
+    this.setupScene(scene)
   }
 
   onTapPrev() {
@@ -294,15 +299,7 @@ class BoardViewer extends LitElement {
       this.forward.push(this.scene)
     }
 
-    this.scene = scene
-
-    /* scene의 기존 target을 보관한다. */
-    this._oldtarget = this.scene.target
-    this.scene.target = this.target
-    this.bindSceneEvents(this.scene)
-
-    this.scene.fit('ratio')
-    this.transientShowButtons()
+    this.setupScene(scene)
   }
 
   onTapFullscreen() {
