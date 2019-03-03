@@ -35,7 +35,7 @@ class BoardViewer extends LitElement {
   }
 
   render() {
-    var fabFullscreen = isIOS()
+    var fabFullscreen = !isIOS()
       ? html`
           <mwc-fab
             id="fullscreen"
