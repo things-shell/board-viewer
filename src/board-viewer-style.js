@@ -8,7 +8,7 @@ export const style = css`
     overflow: hidden;
   }
 
-  div {
+  #target {
     flex: 1;
     width: 100%; /* 전체화면보기를 위해서 필요함. */
   }
@@ -49,5 +49,20 @@ export const style = css`
     position: absolute;
     bottom: 15px;
     right: 16px;
+  }
+
+  /* for scroller */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #aa866a;
   }
 `
