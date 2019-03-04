@@ -13,10 +13,9 @@ class BoardViewer extends LitElement {
   constructor() {
     super()
 
-    this.board = ''
+    this.board = {}
     this.provider = null
     this.scene = null
-    this.fitMode = 'ratio'
 
     this.forward = []
     this.backward = []
@@ -26,7 +25,6 @@ class BoardViewer extends LitElement {
     return {
       board: Object,
       provider: Object,
-      fitMode: String,
       baseUrl: String
     }
   }
@@ -80,7 +78,7 @@ class BoardViewer extends LitElement {
 
   firstUpdated() {
     window.addEventListener('resize', () => {
-      this.scene && this.scene.fit(this.fitMode)
+      this.scene && this.scene.fit(this.board.fit)
     })
   }
 
@@ -177,7 +175,7 @@ class BoardViewer extends LitElement {
     /* scene의 기존 target을 보관한다. */
     this._oldtarget = this.scene.target
 
-    this.scene.fit(this.fitMode)
+    this.scene.fit(this.board.fit)
     this.scene.target = this.target
 
     this.bindSceneEvents(this.scene)
