@@ -183,7 +183,7 @@ class BoardViewer extends LitElement {
     this.transientShowButtons()
   }
 
-  async showScene(boardId) {
+  async showScene(boardId, bindingData) {
     if (!boardId) return
 
     try {
@@ -213,6 +213,10 @@ class BoardViewer extends LitElement {
       this.forward = []
 
       this.setupScene(scene)
+
+      if (bindingData) {
+        scene.data = bindingData
+      }
     } catch (e) {
       console.error(e)
     }
@@ -304,11 +308,11 @@ class BoardViewer extends LitElement {
     togglefullscreen(this.target)
   }
 
-  onLinkGoto(torgetBoardId) {
-    this.showScene(torgetBoardId)
+  onLinkGoto(targetBoardId, value, fromComponent) {
+    this.showScene(targetBoardId, fromComponent.data)
   }
 
-  onLinkOpen(url) {
+  onLinkOpen(url, value, fromComponent) {
     if (!url) return
 
     try {
@@ -318,7 +322,7 @@ class BoardViewer extends LitElement {
     }
   }
 
-  onLinkMove(url) {
+  onLinkMove(url, value, fromComponent) {
     if (!url) return
 
     location.href = url
