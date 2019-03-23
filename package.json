@@ -1,6 +1,6 @@
 {
   "name": "@things-shell/board-viewer",
-  "version": "0.3.12",
+  "version": "0.4.0",
   "main": "src/index.js",
   "repository": "https://github.com/things-shell/board-viewer.git",
   "author": "Hearty Oh <heartyoh@hatiolab.com>",
@@ -15,15 +15,15 @@
     "@material/mwc-button": "^0.4.0",
     "@material/mwc-fab": "^0.4.0",
     "@material/mwc-icon": "^0.3.5",
-    "@things-shell/client-utils": "^0.1.2",
-    "lit-element": "^2.0.1"
+    "@things-shell/client-utils": "^0.2.1",
+    "lit-element": "^2.1.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.3.4",
-    "@babel/preset-env": "^7.3.4",
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
     "babel-loader": "^8.0.5",
     "html-webpack-plugin": "^3.2.0",
-    "rollup": "^1.6.0",
+    "rollup": "^1.7.0",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^9.2.1",
     "rollup-plugin-node-resolve": "^4.0.1",
