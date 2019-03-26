@@ -80,6 +80,15 @@ class BoardViewer extends LitElement {
     window.addEventListener('resize', () => {
       this.scene && this.scene.fit(this.board.fit)
     })
+
+    this.shadowRoot.addEventListener(
+      'close-scene',
+      e => {
+        e.preventDefault()
+        this.onTapPrev()
+      },
+      false
+    )
   }
 
   updated(changes) {
