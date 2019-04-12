@@ -6,11 +6,13 @@ export const style = css`
     flex-direction: column;
     width: 100%; /* 전체화면보기를 위해서 필요함. */
     overflow: hidden;
+    position: relative;
   }
 
   #target {
     flex: 1;
     width: 100%; /* 전체화면보기를 위해서 필요함. */
+    height: 100%;
   }
 
   /* navigation buttons */
