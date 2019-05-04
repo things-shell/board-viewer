@@ -1,6 +1,6 @@
 {
   "name": "@things-shell/board-viewer",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "main": "src/index.js",
   "repository": "https://github.com/things-shell/board-viewer.git",
   "author": "Hearty Oh <heartyoh@hatiolab.com>",
@@ -12,9 +12,9 @@
   },
   "dependencies": {
     "@hatiolab/things-scene": "^2.5.18",
-    "@material/mwc-button": "^0.4.0",
-    "@material/mwc-fab": "^0.4.0",
-    "@material/mwc-icon": "^0.3.5",
+    "@material/mwc-button": "^0.5.0",
+    "@material/mwc-fab": "^0.5.0",
+    "@material/mwc-icon": "^0.5.0",
     "@things-shell/client-utils": "^0.3.0",
     "lit-element": "^2.1.0"
   },
