@@ -4,9 +4,15 @@ export const style = css`
   :host {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%; /* 전체화면보기를 위해서 필요함. */
     overflow: hidden;
     position: relative;
+  }
+
+  :host {
+    background-color: #fff;
   }
 
   #target {
@@ -15,11 +21,13 @@ export const style = css`
     height: 100%;
   }
 
+  #target:fullscreen {
+    background-color: #fff;
+  }
+
   /* navigation buttons */
   mwc-icon {
-    z-index: 10;
     position: absolute;
-    top: 45%;
     min-width: 50px;
     width: 50px;
     height: 50px;
@@ -28,6 +36,14 @@ export const style = css`
     color: #fff;
 
     --mdc-icon-size: 3em;
+
+    background-color: var(--board-viewer-nav-button-bg-color, tomato);
+    border-radius: 50%;
+    opacity: 0.7;
+  }
+
+  mwc-fab {
+    --mdc-theme-secondary: var(--board-viewer-fab-bg-color, tomato);
   }
 
   mwc-icon[hidden] {
@@ -35,22 +51,21 @@ export const style = css`
   }
 
   mwc-icon:hover {
-    background-color: tomato;
-    border-radius: 50%;
+    opacity: 1;
   }
 
   #prev {
-    left: 5px;
+    left: 15px;
   }
 
   #next {
-    right: 5px;
+    right: 15px;
   }
 
   #fullscreen {
     position: absolute;
     bottom: 15px;
-    right: 16px;
+    right: 15px;
   }
 
   /* for scroller */

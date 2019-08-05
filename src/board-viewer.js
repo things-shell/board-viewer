@@ -25,7 +25,8 @@ class BoardViewer extends LitElement {
     return {
       board: Object,
       provider: Object,
-      baseUrl: String
+      baseUrl: String,
+      scene: Object
     }
   }
 
@@ -48,6 +49,12 @@ class BoardViewer extends LitElement {
       : html``
 
     return html`
+      <div
+        id="target"
+        @touchstart=${e => this.transientShowButtons()}
+        @mousemove=${e => this.transientShowButtons()}
+      ></div>
+
       <mwc-icon
         id="prev"
         @click=${e => this.onTapPrev(e)}
@@ -56,12 +63,6 @@ class BoardViewer extends LitElement {
         hidden
         >keyboard_arrow_left</mwc-icon
       >
-
-      <div
-        id="target"
-        @touchstart=${e => this.transientShowButtons()}
-        @mousemove=${e => this.transientShowButtons()}
-      ></div>
 
       <mwc-icon
         id="next"
@@ -78,7 +79,7 @@ class BoardViewer extends LitElement {
 
   firstUpdated() {
     window.addEventListener('resize', () => {
-      this.scene && this.scene.fit(this.board.fit)
+      this.scene && this.scene.fit(this.board && this.board.fit)
     })
 
     this.shadowRoot.addEventListener(
@@ -112,6 +113,18 @@ class BoardViewer extends LitElement {
         this.backward.forEach(scene => scene.release())
         this.backward = []
       }
+    }
+
+    if (changes.has('scene')) {
+      this.dispatchEvent(
+        new CustomEvent('scene-changed', {
+          composed: true,
+          bubbles: true,
+          detail: {
+            scene: this.scene
+          }
+        })
+      )
     }
   }
 
