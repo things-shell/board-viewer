@@ -19,6 +19,8 @@ class BoardViewer extends LitElement {
 
     this.forward = []
     this.backward = []
+
+    this._fullscreenFabIcon = 'fullscreen'
   }
 
   static get properties() {
@@ -26,7 +28,8 @@ class BoardViewer extends LitElement {
       board: Object,
       provider: Object,
       baseUrl: String,
-      scene: Object
+      scene: Object,
+      _fullscreenFabIcon: String
     }
   }
 
@@ -39,9 +42,9 @@ class BoardViewer extends LitElement {
       ? html`
           <mwc-fab
             id="fullscreen"
-            icon="fullscreen"
+            .icon=${this._fullscreenFabIcon}
             @click=${e => this.onTapFullscreen(e)}
-            @mouseover=${e => this.transientShowButtons(stop)}
+            @mouseover=${e => this.transientShowButtons(true)}
             @mouseout=${e => this.transientShowButtons()}
             title="fullscreen"
           ></mwc-fab>
@@ -327,7 +330,15 @@ class BoardViewer extends LitElement {
   }
 
   onTapFullscreen() {
-    togglefullscreen(this.target)
+    togglefullscreen(
+      this,
+      () => {
+        this._fullscreenFabIcon = 'fullscreen_exit'
+      },
+      () => {
+        this._fullscreenFabIcon = 'fullscreen'
+      }
+    )
   }
 
   onLinkGoto(targetBoardId, value, fromComponent) {
