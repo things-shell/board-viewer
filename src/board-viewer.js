@@ -139,12 +139,9 @@ class BoardViewer extends LitElement {
         ...this.board.model
       },
       mode: 0,
-      refProvider: this.provider
+      refProvider: this.provider,
+      baseUrl: this.baseUrl
     })
-
-    if (this.baseUrl) {
-      scene.baseUrl = this.baseUrl
-    }
 
     this.provider.add(this.board.id, scene)
 
