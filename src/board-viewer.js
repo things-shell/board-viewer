@@ -97,7 +97,7 @@ class BoardViewer extends LitElement {
 
   updated(changes) {
     if (changes.has('board')) {
-      if (this.board && this.board.id) {
+      if (this.board && (this.board.id || this.board.model)) {
         this.initScene()
       } else {
         if (this.scene) {
@@ -132,23 +132,23 @@ class BoardViewer extends LitElement {
   }
 
   initScene() {
-    if (!this.board || !this.board.id) return
+    if (!this.board) return
 
-    var scene = create({
-      model: {
-        ...this.board.model
-      },
-      mode: 0,
-      refProvider: this.provider,
-      baseUrl: this.baseUrl
-    })
+    if(this.board.id) {
+      this.showScene(this.board.id)
+    } else {
+      var scene = create({
+        model: {
+          ...this.board.model
+        },
+        mode: 0,
+        refProvider: this.provider,
+        baseUrl: this.baseUrl
+      })
 
-    this.provider.add(this.board.id, scene)
-
-    this.showScene(this.board.id)
-
-    /* provider.add 시에 추가된 레퍼런스 카운트를 다운시켜주어야 함 */
-    scene.release()
+      this.provider.add('viewer', scene)
+      this.setupScene(scene)
+    }
   }
 
   get target() {
