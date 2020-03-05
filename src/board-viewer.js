@@ -84,15 +84,15 @@ class BoardViewer extends LitElement {
     window.addEventListener('resize', () => {
       this.scene && this.scene.fit()
     })
-
-    this.shadowRoot.addEventListener(
-      'close-scene',
-      e => {
-        e.preventDefault()
-        this.onTapPrev()
-      },
-      false
-    )
+    // 주석 이유: pop up close current board 시에 직전 보드가 아닌 그 전 보드로 이동됨
+    // this.shadowRoot.addEventListener(
+    //   'close-scene',
+    //   e => {
+    //     e.preventDefault()
+    //     this.onTapPrev()
+    //   },
+    //   false
+    // )
   }
 
   updated(changes) {
