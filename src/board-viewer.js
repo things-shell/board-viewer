@@ -244,16 +244,16 @@ class BoardViewer extends LitElement {
     }
   }
 
-  bindSceneEvents() {
-    this.scene.on('goto', this.onLinkGoto, this)
-    this.scene.on('link-open', this.onLinkOpen, this)
-    this.scene.on('link-move', this.onLinkMove, this)
+  bindSceneEvents(scene) {
+    scene.on('goto', this.onLinkGoto, this)
+    scene.on('link-open', this.onLinkOpen, this)
+    scene.on('link-move', this.onLinkMove, this)
   }
 
   unbindSceneEvents(scene) {
-    this.scene.off('goto', this.onLinkGoto, this)
-    this.scene.off('link-open', this.onLinkOpen, this)
-    this.scene.off('link-move', this.onLinkMove, this)
+    scene.off('goto', this.onLinkGoto, this)
+    scene.off('link-open', this.onLinkOpen, this)
+    scene.off('link-move', this.onLinkMove, this)
   }
 
   transientShowButtons(stop) {
